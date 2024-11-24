@@ -48,9 +48,6 @@ To run the application:
 *Advanced Retrieval Methods: Explore additional APIs, open-source models like LLaMA, and optimizations to refine the retrieval and generation process. Integrating these models can provide cost-effective alternatives to proprietary APIs while maintaining robust generative capabilities*
 
 
-### Notes on the License Section:
-1. **Custom Text**: The copyright text is tailored to attribute ownership to Noah Kostesku.
-2. **Optional License**: You can choose any open-source license, such as MIT, GPL, or others, or simply keep the "All rights reserved" statement.
-3. **Contact Information**: Adding contact details is optional but can clarify how to seek permissions or ask questions about usage.
-4. **Hyperlinks**: The `[MIT License](https://opensource.org/licenses/MIT)` provides a clickable link for more information. Adjust based on the selected license.
+© 2024 Noah Kostesku. All rights reserved.
+
 
