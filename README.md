@@ -17,7 +17,9 @@ This project focuses on building a Self-Corrective Reasoning Augmented Generativ
 **Generative AI Integration**: The OpenAI API is employed to handle the generative aspects of the project, leveraging models like GPT-4 to produce high-quality text outputs.
 
 To install all dependencies, run:
-`pip install -r requirements.txt`
+```pip install -r requirements.txt```
+To run the application:
+```python app.py```
 
 ## Current Status
 
@@ -44,3 +46,11 @@ To install all dependencies, run:
 - Cloud Deployment: Deploy the system using Docker for scalability.
 
 *Advanced Retrieval Methods: Explore additional APIs, open-source models like LLaMA, and optimizations to refine the retrieval and generation process. Integrating these models can provide cost-effective alternatives to proprietary APIs while maintaining robust generative capabilities*
+
+
+### Notes on the License Section:
+1. **Custom Text**: The copyright text is tailored to attribute ownership to Noah Kostesku.
+2. **Optional License**: You can choose any open-source license, such as MIT, GPL, or others, or simply keep the "All rights reserved" statement.
+3. **Contact Information**: Adding contact details is optional but can clarify how to seek permissions or ask questions about usage.
+4. **Hyperlinks**: The `[MIT License](https://opensource.org/licenses/MIT)` provides a clickable link for more information. Adjust based on the selected license.
+
