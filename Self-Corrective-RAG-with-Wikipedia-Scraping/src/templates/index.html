@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Self-Corrective RAG Chatbot</title>
+    <!-- Link to the external CSS file -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Self-Corrective RAG Chatbot</h1>
+        
+        <h2>Question:</h2> <!-- Added Question header -->
+        <input type="text" id="question" placeholder="Enter A Question">
+        <button onclick="getAnswer()">Submit</button>
+        
+        <h2>Answer:</h2>
+        <div id="answer"></div>
+
+        <input type="text" id="feedback" placeholder="Enter Feedback">
+        <button onclick="provideFeedback()">Submit Feedback</button>
+
+        <button class="feedback-button" onclick="resetChat()">New Prompt</button>
+    </div>
+
+    <!-- Link to the external JavaScript file -->
+    <script src="{{ url_for('static', filename='scripts.js') }}"></script>
+</body>
+</html>
+

@@ -7,7 +7,7 @@ app = Flask(__name__)
 def index():
     if request.method == 'POST':
         question = request.form['question']
-        feedback = request.form.get('feedback')  # Optional feedback handling
+        feedback = request.form.get('feedback')  
         result = self_corrective_rag(question, feedback)
         return jsonify(result)  # Return the result as JSON
     return render_template('index.html')
