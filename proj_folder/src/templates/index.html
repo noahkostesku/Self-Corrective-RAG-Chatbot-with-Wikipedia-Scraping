@@ -1,0 +1,157 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Self-Corrective RAG Chatbot</title>
+    <style>
+        body {
+            font-family: Roboto, sans-serif;
+            background-color: #121212; /* Dark background */
+            color: #ffffff; /* White text */
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #ff4757; /* Red color for the header */
+            text-align: center;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: auto;
+            padding: 20px;
+            border-radius: 8px;
+            background-color: #1e1e1e;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        input[type="text"] {
+            width: calc(100% - 22px);
+            padding: 10px;
+            margin-bottom: 20px;
+            border: none;
+            border-radius: 4px;
+            background-color: #2c2c2c; /* Darker input field */
+            color: #ffffff; /* White text in input */
+            transition: all 0.3s ease; /* Smooth transition for hover effect */
+        }
+
+        input[type="text"]:hover {
+            background-color: #3a3a3a; /* Lighter dark on hover */
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            background-color: #ff4757; /* Red button */
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: transform 0.3s ease; /* Smooth transition for hover effect */
+        }
+
+        button:hover {
+            transform: scale(1.02); /* Scale up on hover */
+        }
+
+        .feedback-button {
+            margin-top: 10px; /* Add margin between Submit Feedback and New Prompt buttons */
+        }
+
+        h2 {
+            margin-top: 20px;
+        }
+
+        #answer {
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #2c2c2c; /* Darker background for answers */
+            border-radius: 4px;
+        }
+
+        #answer ul {
+            list-style-type: disc; /* Bullet points */
+            padding-left: 20px; /* Indentation for list items */
+        }
+
+        #answer li {
+            margin-bottom: 5px; /* Space between list items */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Self-Corrective RAG Chatbot</h1>
+        
+        <input type="text" id="question" placeholder="Enter A Question">
+        <button onclick="getAnswer()">Submit</button>
+        
+        <h2>Answer:</h2>
+        <div id="answer"></div>
+
+        <input type="text" id="feedback" placeholder="Enter Feedback">
+        <button onclick="provideFeedback()">Submit Feedback</button>
+
+        <button class="feedback-button" onclick="resetChat()">New Prompt</button>
+    </div>
+
+    <script>
+        function getAnswer() {
+            var question = document.getElementById('question').value;
+            fetch('/', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+                body: 'question=' + encodeURIComponent(question)
+            })
+            .then(response => response.json())
+            .then(data => displayAnswer(data.answer)); // Pass answer to display function
+        }
+
+        function displayAnswer(answer) {
+            const answerElement = document.getElementById('answer');
+
+            // Clear previous answer
+            answerElement.innerHTML = ''; 
+
+            // Example logic to format lists or headers
+            if (Array.isArray(answer)) { // If the answer is an array (list)
+                const ul = document.createElement('ul');
+                answer.forEach(item => {
+                    const li = document.createElement('li');
+                    li.textContent = item;
+                    ul.appendChild(li);
+                });
+                answerElement.appendChild(ul);
+            } else { // If it's just a string, display it as a paragraph
+                const p = document.createElement('p');
+                p.textContent = answer;
+                answerElement.appendChild(p);
+            }
+        }
+
+        function provideFeedback() {
+            var question = document.getElementById('question').value;
+            var feedback = document.getElementById('feedback').value;
+
+            fetch('/', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+                body: 'question=' + encodeURIComponent(question) + '&feedback=' + encodeURIComponent(feedback)
+            })
+            .then(response => response.json())
+            .then(data => displayAnswer(data.answer)); // Update with new answer after feedback
+        }
+
+        function resetChat() {
+            document.getElementById('question').value = ''; // Clear question input
+            document.getElementById('feedback').value = ''; // Clear feedback input
+            document.getElementById('answer').innerText = ''; // Clear answer display
+        }
+    </script>
+</body>
+</html>
