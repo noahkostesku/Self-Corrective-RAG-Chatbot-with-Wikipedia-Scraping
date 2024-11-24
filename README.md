@@ -19,7 +19,7 @@ This project focuses on building a Self-Corrective Reasoning Augmented Generativ
 To install all dependencies, run:
 ```pip install -r requirements.txt```
 To run the application:
-```python app.py```
+```python src/app.py```
 
 ## Current Status
 
