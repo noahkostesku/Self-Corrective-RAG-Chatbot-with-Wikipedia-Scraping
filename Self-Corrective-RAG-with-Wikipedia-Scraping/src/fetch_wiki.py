@@ -8,6 +8,7 @@ from retrying import retry
 logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
 
 @retry(stop_max_attempt_number=3, wait_fixed=2000)
+#fetch wiki page content, with a max length of 10 sentences
 def fetch_content(title, sentences=10):
     try:
         return wikipedia.summary(title, sentences=sentences, auto_suggest=False, redirect=True)
@@ -19,6 +20,7 @@ def fetch_content(title, sentences=10):
         logging.error(f"Error fetching '{title}': {e}")
     return None
 
+#debugging function for faulty titles
 def fetch_wikipedia_contents(titles, sentences=10):
     wiki_data = []
     for title in titles:
@@ -31,6 +33,7 @@ def fetch_wikipedia_contents(titles, sentences=10):
     return wiki_data
 
 def main():
+    #retrieve wikipedia titles
     titles = [
         "OpenAI",
         "Artificial intelligence",
