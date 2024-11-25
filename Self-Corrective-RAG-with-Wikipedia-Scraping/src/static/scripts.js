@@ -1,4 +1,5 @@
 function getAnswer() {
+    //Retrieve the user's question
     var question = document.getElementById('question').value;
     fetch('/', {
         method: 'POST',
@@ -6,17 +7,17 @@ function getAnswer() {
         body: 'question=' + encodeURIComponent(question)
     })
     .then(response => response.json())
-    .then(data => displayAnswer(data.answer)); // Pass answer to display function
+    .then(data => displayAnswer(data.answer));
 }
 
 function displayAnswer(answer) {
     const answerElement = document.getElementById('answer');
 
-    // Clear previous answer
+    //Clear previous answer in user-interface
     answerElement.innerHTML = ''; 
 
-    // Example logic to format lists or headers
-    if (Array.isArray(answer)) { // If the answer is an array (list)
+    //Format chatbot output
+    if (Array.isArray(answer)) { 
         const ul = document.createElement('ul');
         answer.forEach(item => {
             const li = document.createElement('li');
@@ -24,7 +25,7 @@ function displayAnswer(answer) {
             ul.appendChild(li);
         });
         answerElement.appendChild(ul);
-    } else { // If it's just a string, display it as a paragraph
+    } else {
         const p = document.createElement('p');
         p.textContent = answer;
         answerElement.appendChild(p);
@@ -41,11 +42,12 @@ function provideFeedback() {
         body: 'question=' + encodeURIComponent(question) + '&feedback=' + encodeURIComponent(feedback)
     })
     .then(response => response.json())
-    .then(data => displayAnswer(data.answer)); // Update with new answer after feedback
+    //Update with new answer after feedback
+    .then(data => displayAnswer(data.answer));
 }
-
+//Clear question input, feeback input, and answer display
 function resetChat() {
-    document.getElementById('question').value = ''; // Clear question input
-    document.getElementById('feedback').value = ''; // Clear feedback input
-    document.getElementById('answer').innerText = ''; // Clear answer display
+    document.getElementById('question').value = ''; 
+    document.getElementById('feedback').value = ''; 
+    document.getElementById('answer').innerText = '';
 }
