@@ -9,7 +9,7 @@ def index():
         question = request.form['question']
         feedback = request.form.get('feedback')  
         result = self_corrective_rag(question, feedback)
-        return jsonify(result)  # Return the result as JSON
+        return jsonify(result) 
     return render_template('index.html')
 
 if __name__ == '__main__':
