@@ -32,7 +32,7 @@ h1 {
     right: -5px; 
     bottom: -5px;
     border-radius: 12px;
-    background: linear-gradient(100deg, rgb(255, 75, 75), rgb(255, 165, 0), rgb(255, 255, 0)); /* Red to orange to yellow */
+    background: linear-gradient(100deg, rgb(255, 75, 75), rgb(255, 165, 0), rgb(255, 255, 0));
     background-size: 400%; 
     z-index: -1; 
     animation: glow 20s linear infinite;
@@ -87,8 +87,8 @@ button:hover {
 }
 
 h2 {
-    margin-top: 20px; /* Ensure there's space above */
-    color: #ff4757; /* Match the color of your website */
+    margin-top: 20px;
+    color: #ff4757;
 }
 
 #answer {
